@@ -1,0 +1,13 @@
+import unittest
+import sys
+sys.path.append("..")
+import align
+from nltk.corpus import stopwords
+
+class TestAlign(unittest.TestCase):
+    def test_align(self):
+        base_sentence = "京都市 洪水被害 深刻化".split(" ")
+        target_sentence = "洪水 3人 死亡 京都府".split(" ")
+        aligned = align(base_sentence, target_sentence)
+        true_align = ["京都府", "洪水", None]
+        self.assertEqual(aligned, true_align)
